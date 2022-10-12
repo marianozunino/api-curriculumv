@@ -24,4 +24,4 @@ const dataSchema = new mongoose.Schema({
   otherstudies: { type: String, unique: false, required: false },
 });
 
-module.exports = mongoose.model("Data", dataSchema);
+module.exports = mongoose.model("Entry", dataSchema);

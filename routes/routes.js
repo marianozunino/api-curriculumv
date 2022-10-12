@@ -5,7 +5,7 @@ const router = express.Router();
 const Model = require("../models/model");
 
 //Post Method
-router.post("/post", async (req, res) => {
+router.post("/entries", async (req, res) => {
   const data = new Model({
     name: req.body.name,
     age: req.body.age,
@@ -24,7 +24,7 @@ router.post("/post", async (req, res) => {
 });
 
 //Get all Method
-router.get("/getAll", async (req, res) => {
+router.get("/entries", async (req, res) => {
   try {
     const data = await Model.find();
     res.json(data);
@@ -34,7 +34,7 @@ router.get("/getAll", async (req, res) => {
 });
 
 //Get by ID Method
-router.get("/getOne/:id", async (req, res) => {
+router.get("/entries/:id", async (req, res) => {
   try {
     const data = await Model.findById(req.params.id);
     res.json(data);
@@ -44,7 +44,7 @@ router.get("/getOne/:id", async (req, res) => {
 });
 
 //Update by ID Method
-router.patch("/update/:id", async (req, res) => {
+router.patch("/entries/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
@@ -59,22 +59,11 @@ router.patch("/update/:id", async (req, res) => {
 });
 
 //Delete by ID Method
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/entries/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = await Model.findByIdAndDelete(id);
     res.send(`Document with ${data.name} has been deleted..`);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
-
-//Delete all
-router.delete("/deleteAll", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const data = await Model.deleteMany();
-    res.send(`All has been deleted..`);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
