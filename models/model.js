@@ -9,12 +9,13 @@ const dataSchema = new mongoose.Schema({
     required: true,
     type: Number,
   },
-  studies: {
-    unique: false,
-    institution: { type: String, unique: false, required: false },
-    years: { type: String, unique: false, required: false },
-    description: { type: String, unique: false, required: false },
-  },
+  studies: [
+    {
+      institution: { type: String, unique: false, required: false },
+      years: { type: String, unique: false, required: false },
+      description: { type: String, unique: false, required: false },
+    }
+  ],
   workexperience: {
     company: { type: String, unique: false, required: false },
     jobpost: { type: String, unique: false, required: false },
