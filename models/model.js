@@ -10,10 +10,10 @@ const dataSchema = new mongoose.Schema({
     type: Number,
   },
   studies: {
-    unique: false,
-    institution: { type: String, unique: false, required: false },
-    years: { type: String, unique: false, required: false },
-    description: { type: String, unique: false, required: false },
+      unique: false,
+      institution: { type: String, unique: false, required: false },
+      years: { type: String, unique: false, required: false },
+      description: { type: String, unique: false, required: false },
   },
   workexperience: {
     company: { type: String, unique: false, required: false },
